@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import Navbar from "../components/Navbar";
 import api from "../lib/axios";
-import NoteCard from "../components/NoteCard";
+import Navbar from "../components/Navbar";
 import NotesNotFound from "../components/NotesNotFound";
+import NoteCard from "../components/NoteCard";
 
 const HomePage = () => {
   const [notes, setNotes] = useState([]);
