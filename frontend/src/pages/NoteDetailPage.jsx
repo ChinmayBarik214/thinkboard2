@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router";
-import api from "../lib/axios";
 import { ArrowLeftIcon, LoaderIcon, Trash2Icon } from "lucide-react";
+import { useEffect, useState } from "react";
+import api from "../lib/axios";
 
 const NoteDetailPage = () => {
   const [note, setNote] = useState(null);
@@ -79,7 +79,7 @@ const NoteDetailPage = () => {
           <form className="card bg-base-100">
             <div className="card-body">
               <div className="mb-4">
-                <label className="label" for="title">
+                <label className="label" htmlFor="title">
                   <span>Title</span>
                 </label>
                 <input
@@ -94,7 +94,7 @@ const NoteDetailPage = () => {
               </div>
 
               <div className="mb-4">
-                <label className="label" for="content">
+                <label className="label" htmlFor="content">
                   <span>Content</span>
                 </label>
                 <textarea
