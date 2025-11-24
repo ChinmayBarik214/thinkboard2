@@ -7,6 +7,7 @@ const NoteDetailPage = () => {
   const [note, setNote] = useState(null);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
+  const [error, setError] = useState(false);
 
   const navigate = useNavigate();
 
@@ -18,7 +19,11 @@ const NoteDetailPage = () => {
         const res = await api.get(`/notes/${id}`);
         setNote(res.data);
       } catch (error) {
-        console.log("Error in fetching note", error);
+        if (error.response?.status === 500) {
+          setError(true); // note not found
+        } else {
+          console.error("Error in fetching note", error);
+        }
       } finally {
         setLoading(false);
       }
@@ -37,12 +42,7 @@ const NoteDetailPage = () => {
   };
 
   const handleSave = async () => {
-    if (!note.title.trim() || !note.content.trim()) {
-      return;
-    }
-
     setSaving(true);
-
     try {
       await api.put(`/notes/${id}`, note);
       navigate("/");
@@ -57,6 +57,22 @@ const NoteDetailPage = () => {
     return (
       <div className="min-h-screen bg-base-200 flex items-center justify-center">
         <LoaderIcon className="animate-spin size-10" />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen bg-base-200 flex items-center justify-center">
+        <div className="card bg-base-100">
+          <div className="card-body">
+            <h2 className="card-title text-2xl justify-center">Note Not Found</h2>
+            <p className="text-base-content/60 mb-4">The note you're looking for doesn't exist or has been deleted.</p>
+            <Link to="/" className="btn btn-primary">
+              Back to Notes
+            </Link>
+          </div>
+        </div>
       </div>
     );
   }
