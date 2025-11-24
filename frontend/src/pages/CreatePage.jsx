@@ -36,40 +36,35 @@ const CreatePage = () => {
           <div className="card-body">
             <h2 className="card-title text-2xl mb-4">Create New Note</h2>
             <form onSubmit={handleSubmit}>
-              <div className="mb-4">
-                <label className="label mb-2" for="title">
-                  <span>Title</span>
-                </label>
-                <input
-                  id="title"
-                  type="text"
-                  placeholder="Note title"
-                  className="input input-bordered w-full"
-                  value={title}
-                  onChange={(e) => setTitle(e.target.value)}
-                  required
-                />
-              </div>
 
-              <div className="mb-4">
-                <label for="content" className="label mb-2">
-                  <span>Content</span>
-                </label>
-                <textarea
-                  id="content"
-                  placeholder="Note content"
-                  className="textarea textarea-bordered h-32 w-full"
-                  value={content}
-                  onChange={(e) => setContent(e.target.value)}
-                  required
-                />
-              </div>
+              <label htmlFor="title" className="label mb-2">
+                Title
+              </label>
+              <input
+                id="title"
+                className="input w-full mb-4"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                required
+              />
+
+              <label htmlFor="content" className="label mb-2">
+                Content
+              </label>
+              <textarea
+                id="content"
+                className="textarea h-32 w-full mb-4"
+                value={content}
+                onChange={(e) => setContent(e.target.value)}
+                required
+              />
 
               <div className="flex justify-end">
                 <button type="submit" className="btn btn-primary" disabled={loading}>
                   {loading ? "Creating..." : "Create Note"}
                 </button>
               </div>
+              
             </form>
           </div>
         </div>

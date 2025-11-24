@@ -78,34 +78,31 @@ const NoteDetailPage = () => {
 
           <form className="card bg-base-100">
             <div className="card-body">
-              <div className="mb-4">
-                <label className="label" htmlFor="title">
-                  <span>Title</span>
-                </label>
-                <input
-                  id="title"
-                  type="text"
-                  placeholder="Note title"
-                  className="input w-full"
-                  value={note.title}
-                  onChange={(e) => setNote({ ...note, title: e.target.value })}
-                  required
-                />
-              </div>
 
-              <div className="mb-4">
-                <label className="label" htmlFor="content">
-                  <span>Content</span>
-                </label>
-                <textarea
-                  id="content"
-                  placeholder="Note content"
-                  className="textarea h-32 w-full"
-                  value={note.content}
-                  onChange={(e) => setNote({ ...note, content: e.target.value })}
-                  required
-                />
-              </div>
+              <label htmlFor="title" className="label">
+                <span>Title</span>
+              </label>
+              <input
+                id="title"
+                type="text"
+                placeholder="Note title"
+                className="input w-full mb-4"
+                value={note.title}
+                onChange={(e) => setNote({ ...note, title: e.target.value })}
+                required
+              />
+
+              <label htmlFor="content" className="label">
+                <span>Content</span>
+              </label>
+              <textarea
+                id="content"
+                placeholder="Note content"
+                className="textarea h-32 w-full mb-4"
+                value={note.content}
+                onChange={(e) => setNote({ ...note, content: e.target.value })}
+                required
+              />
 
               <div className="flex justify-end">
                 <button type="submit" className="btn btn-primary" disabled={saving} onClick={handleSave}>
